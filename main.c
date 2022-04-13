@@ -39,10 +39,6 @@ void logic(){
     if(hp==0){
         gameover=1;
     }
-    if(gameover){
-        system("cls");
-        printf("You Suck");
-    }
 }
 
 void input(){
@@ -77,5 +73,12 @@ int main(){
         input();
         logic();
     }
+    system("cls");
+    printf("===== ควยเล่นกาก =====");
+    while (1)
+    {
+        continue;
+    }
+    
     return 0;
 }
