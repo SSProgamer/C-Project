@@ -9,8 +9,7 @@
 
 ## C Language Project for Computer Programming
 
-[กดดิ๊](http://www.google.com)
-![Google ](https://www.google.co.th/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png)
+[![Google](https://www.google.co.th/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png)](http://www.google.com)
 
 - สถานะการอยู่เกมอยู่ในป่าลึก เราต้องเอาตัวรอดจากป่าให้ได้ประมาณ700วัน
 - กดสำรวจเพื่ออออออออออออออออกไปหาทรัพยากร ในการดำรงชีวิตหรืออาจจะเหตุการณ์พิเศษเกิดขึ้นก็เป็นได้...
