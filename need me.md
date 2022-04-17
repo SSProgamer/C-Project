@@ -34,7 +34,7 @@
 - Game Flow 
 ```mermaid
 flowchart TD
-start(Start Game) ---> main menu ---> hp(HP > 0 && Day < 7) --true--> day(New Day) ---> hp
+start(Start Game) ---> mainmenu(Main Menu) ---> hp(HP > 0 && Day < 7) --true--> day(New Day) ---> hp
 hp --false--> e(End Game)
 ```
 - UI Flow
