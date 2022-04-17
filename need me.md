@@ -35,7 +35,8 @@
 ```mermaid
 flowchart TD
 start(Start Game) ---> ingame(game play)
-ingame ---> explore(exploring)
+ingame ---> explore(exploring) ---> way(choose way) ---> event(random event)
+event --(day14 && location plane crash)--> e(End Game)
 ingame ---> Itemuse(Item use)
 ingame ---> combe(combe)
 ingame ---> stack(energy bur) --->hp
