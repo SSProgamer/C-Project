@@ -37,8 +37,8 @@ flowchart TD
 start(Start Game) ---> stack(energy bur) --->hp
 stack(energy bur) --->Hunger(Hunger)
 stack(energy bur) --->Thirsty(Thirsty)
-hp(HP > 0 && Day < 15) --true--> day(New Day) ---> hp
-hp --false--> e(End Game)
+Thirsty(Thirsty <= 0) --true--> hp(hp-2)
+hp(HP <= 0) --false--> e(End Game)
 ```
 - UI Flow
 
