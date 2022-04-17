@@ -34,8 +34,9 @@
 - Game Flow 
 ```mermaid
 flowchart TD
-start(Start Game) ---> stack(energy bur) --->hp
 start(Start Game) ---> ingame(game play)
+ingame ---> explore(exploring)
+ingame ---> stack(energy bur) --->hp
 stack(energy bur) --->Hunger(Hunger) --true--> hp_down(hp_down) ---> hp
 stack(energy bur) --->Thirsty(Thirsty) --true--> hp_down(hp_down) ---> hp
 hp(HP <= 0) --true--> e(End Game)
