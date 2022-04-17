@@ -39,7 +39,7 @@ stack(energy bur) --->Hunger(Hunger)
 stack(energy bur) --->Thirsty(Thirsty)
 Hunger(Hunger <= 0) --true--> hp_down(hp_down) ---> hp
 Thirsty(Thirsty <= 0) --true--> hp_down(hp_down) ---> hp
-hp(HP <= 0) --true--> end(End Game)
+hp(HP <= 0) --true--> e(End Game)
 ```
 - UI Flow
 
