@@ -37,8 +37,8 @@ flowchart TD
 start(Start Game) ---> ingame(game play)
 ingame ---> status(Status) --->hp
 status ---> Stemina(Stemina > 0) --can explore--> explore
-stack(energy bur) --->Hunger(Hunger) --true--> hp_down(hp_down) ---> hp
-stack(energy bur) --->Thirsty(Thirsty) --true--> hp_down(hp_down) ---> hp
+status ---> Hunger(Hunger) --true--> hp_down(hp_down) ---> hp
+status ---> Thirsty(Thirsty) --true--> hp_down(hp_down) ---> hp
 hp(HP <= 0) --true--> e(End Game)
 
 campfire ---> explore(exploring) ---> way(choose way) ---> event(random event)
