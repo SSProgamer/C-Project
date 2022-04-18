@@ -39,10 +39,12 @@ ingame ---> status(Status) --->hp
 status ---> Stemina(Stemina > 0) --can explore--> explore
 status ---> Hunger(Hunger) --true--> hp_down(hp_down) ---> hp
 status ---> Thirsty(Thirsty) --true--> hp_down(hp_down) ---> hp
+status ---> combatpower(Combat Power) --> combet
 hp(HP <= 0) --true--> e(End Game)
 
 campfire ---> explore(exploring) ---> way(choose way) ---> event(random event)
 way ---> campfire
+event ----> combet(Combet)
 event --day14 && location plane crash--> e(End Game)
 event(random event) --collect item--> Item
 ingame ---> Itemuse(Item use)
@@ -68,7 +70,7 @@ campfire(Campfire) ---> Itemcook(Item Cook)
 - equipment มีดล่าสัตว์ เบ็ตตกปลา กระติกกะลามะพร้าว หอก ธนู
 - Craft material ไม้ หิน กะละมะพร้าว เถาวัน 
 
-### combe
+### combat
 - ต่อสู้กับสัตว์กินพืช หากเราโจมตีใส่ กวาง หากไม่สามารถฆ่าได้ใน 1-2 action มันจะหนี
 - ต่อสู้กับปลา เอาหอกทิ่มที่ปลาจะมีโอกาศได้มากว่า อาวุธชนิดอื่นมาก
 - ต่อสู้กับสัตว์กินเนื้อ หากเราโจมตีใส่ เสือ มันจะโจมตีกลับและผู้เล่นจะเสียลด หากเราเสียเลือดจนหมดในการต่อสู้จะตายทันที หากไม่ต้องการสู้ก็ต้องหนี
