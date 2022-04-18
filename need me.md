@@ -55,7 +55,7 @@ event(random event) ----> collectitem(Collec Item) ---> Item
 ingame ---> Itemuse(Item use)
 Item ---> Itemuse ---> Itemuseable(Cook_food Cook_water vegetable fruit coconut herb)
 Item ---> Itemcraft(Item Craft) ---> Itemcraftable(Wood stone coconut_shells vines) ---> equipment(Knives fishing_hooks coconut_shell_flasks spears bows) ---> combatpower
-Item ---> Itemcook(Item Cook) ---> Itemcookable(meat water) ---> foodcook((Cook_food Cook_water) --->Itemuseable
+Item ---> Itemcook(Item Cook) ---> Itemcookable(meat water) ---> foodcook(Cook_food Cook_water) --->Itemuseable
 ingame ---> campfire(Campfire)
 campfire(Campfire) ---> Itemcraft(Item Craft)
 campfire(Campfire) ---> Itemcook(Item Cook)
