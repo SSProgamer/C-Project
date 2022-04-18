@@ -39,7 +39,8 @@ ingame ---> explore(exploring) ---> way(choose way) ---> event(random event)
 event --day14 && location plane crash--> e(End Game)
 event(random event) --collect item--> Item
 ingame ---> Itemuse(Item use) ---> Item
-ingame ---> combe(combe)
+Item ---> Itemuse
+ingame ---> campfire(Campfire)
 ingame ---> stack(energy bur) --->hp
 stack(energy bur) --->Hunger(Hunger) --true--> hp_down(hp_down) ---> hp
 stack(energy bur) --->Thirsty(Thirsty) --true--> hp_down(hp_down) ---> hp
