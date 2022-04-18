@@ -36,9 +36,9 @@
 flowchart TD
 start(Start Game) ---> ingame(game play)
 ingame ---> status(Status) --->hp
-status ---> Stemina(Stemina > 0) --can explore--> explore
-status ---> Hunger(Hunger) --true--> hp_down(hp_down) ---> hp
-status ---> Thirsty(Thirsty) --true--> hp_down(hp_down) ---> hp
+status ---> Stemina(Stemina) -- Stemina > 0 can--> explore
+status ---> Hunger(Hunger) --Hunger > 0--> hp_down(hp_down) ---> hp
+status ---> Thirsty(Thirsty) --Thirsty > 0--> hp_down(hp_down) ---> hp
 status ---> combatpower(Combat Power) --> combet
 hp(HP <= 0) --true--> e(End Game)
 
