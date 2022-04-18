@@ -4,7 +4,7 @@
 #include <ctype.h>
 #include <conio.h>
 
-int hp=10, energy=10, gameover=0, day=1;
+int hp=10, energy=10, gameover=0, day=1, exit=0;
 char test[9999];
 
 void screen(){
@@ -74,11 +74,9 @@ int main(){
         logic();
     }
     system("cls");
-    printf("===== ควยเล่นกาก =====");
-    while (1)
+    while (!exit)
     {
-        continue;
+        break;
     }
-    
     return 0;
 }
