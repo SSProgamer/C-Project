@@ -36,7 +36,7 @@
 flowchart TD
 start(Start Game) ---> ingame(game play)
 campfire ---> explore(exploring) ---> way(choose way) ---> event(random event)
-way --goback--> campfire
+way ---> campfire
 event --day14 && location plane crash--> e(End Game)
 event(random event) --collect item--> Item
 ingame ---> Itemuse(Item use)
