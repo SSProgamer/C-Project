@@ -34,7 +34,7 @@
 - Game Flow 
 ```mermaid
 flowchart TD
-start(Start Game) ---> ingame(game play)
+start(Start Game) ---> ingame(gameplay)
 ingame ---> status(Status) --->hp
 status ---> Stamina(Stamina) -- Stamina > 0 can--> explore
 status ---> Hunger(Hunger) --Hunger <= 0--> hp_down(hp_down) ---> hp
@@ -44,14 +44,14 @@ hp(HP <= 0) --true--> e(End Game)
 
 campfire ---> explore(exploring) ---> way(choose way) ---> event(random event)
 way ---> campfire
-event ----> combet(Combet)
-combet ---> fight(Fight) --win--> collectitem(Collec Item)
+event ----> combet(Combat)
+combet ---> fight(Fight) --win--> collectitem(Collect Item)
 fight(Fight) --lose--> e
 combet ---> run(Run) ---> Staminadown(Stamina Down) --> Stamina
 run(Run) --Stamina <= 0--> e
 event ---> Staminadown(Stamina Down)
 event --day14 && location plane crash--> e(End Game)
-event(random event) ----> collectitem(Collec Item) ---> Item
+event(random event) ----> collectitem(Collect Item) ---> Item
 ingame ---> Itemuse(Item use)
 Item ---> Itemuse ---> Itemuseable(Cook_food Cook_water vegetable fruit coconut herb) --->Hungerup(Hunger up) ---> Hunger
 Itemuseable ---> Thirstyup(Thirsty Up) ---> Thirsty
@@ -89,7 +89,7 @@ campfire(Campfire) ---> Itemcook(Item Cook)
 - map จะมีแบบป่าไม้ แอ่งน้ำ(น้ำ,ปลา) แม่น้ำ(น้ำ,ปลา) ป่ารก(มีโอกาสเจอ ผัก ผลไม้ เห็ด มาก)
 
 ## Team
-1. นายนายชาติณโยดม วิบูลย์พานิช 64070021
+1. นายชาติณโยดม วิบูลย์พานิช 64070021
 2. นายณัฐดนัย ปลื้มใจ 64070029
 3. นายธนวัฒน์ ศรีโท 64070044
 4. นายวัชรวีร์ ศรีพิบูลย์ 64070101
