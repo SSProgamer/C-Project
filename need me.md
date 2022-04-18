@@ -40,6 +40,7 @@ event --day14 && location plane crash--> e(End Game)
 event(random event) --collect item--> Item
 ingame ---> Itemuse(Item use)
 Item ---> Itemuse
+Item ---> Itemcraft(Item Craft)
 ingame ---> campfire(Campfire)
 ingame ---> stack(energy bur) --->hp
 stack(energy bur) --->Hunger(Hunger) --true--> hp_down(hp_down) ---> hp
