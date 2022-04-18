@@ -45,10 +45,10 @@ hp(HP <= 0) --true--> e(End Game)
 campfire ---> explore(exploring) ---> way(choose way) ---> event(random event)
 way ---> campfire
 event ----> combet(Combet)
-combet ---> fight(Fight) --win--> collectitem(Collec Item) ---> Item
-combet ---> run(Run) --use--> Stemina
+combet ---> fight(Fight) --win--> collectitem(Collec Item)
+combet ---> run(Run) ---> Steminadown(Stemina Down) --> Stemina
 run(Run) --Stemina <= 0--> e
-event --event end Stemina down--> Stemina
+event ---> Steminadown(Stemina Down)
 event --day14 && location plane crash--> e(End Game)
 event(random event) ----> collectitem(Collec Item) ---> Item
 ingame ---> Itemuse(Item use)
