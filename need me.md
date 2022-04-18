@@ -38,7 +38,7 @@ start(Start Game) ---> ingame(game play)
 ingame ---> explore(exploring) ---> way(choose way) ---> event(random event)
 event --day14 && location plane crash--> e(End Game)
 event(random event) --collect item--> Item
-ingame ---> Itemuse(Item use) ---> Item
+ingame ---> Itemuse(Item use)
 Item ---> Itemuse
 ingame ---> campfire(Campfire)
 ingame ---> stack(energy bur) --->hp
