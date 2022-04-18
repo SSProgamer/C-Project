@@ -37,8 +37,8 @@ flowchart TD
 start(Start Game) ---> ingame(game play)
 ingame ---> status(Status) --->hp
 status ---> Stemina(Stemina) -- Stemina > 0 can--> explore
-status ---> Hunger(Hunger) --Hunger > 0--> hp_down(hp_down) ---> hp
-status ---> Thirsty(Thirsty) --Thirsty > 0--> hp_down(hp_down) ---> hp
+status ---> Hunger(Hunger) --Hunger <= 0--> hp_down(hp_down) ---> hp
+status ---> Thirsty(Thirsty) --Thirsty <= 0--> hp_down(hp_down) ---> hp
 status ---> combatpower(Combat Power) --> combet
 hp(HP <= 0) --true--> e(End Game)
 
@@ -46,15 +46,16 @@ campfire ---> explore(exploring) ---> way(choose way) ---> event(random event)
 way ---> campfire
 event ----> combet(Combet)
 combet ---> fight(Fight) --win--> collectitem(Collec Item)
+fight(Fight) --lost--> e
 combet ---> run(Run) ---> Steminadown(Stemina Down) --> Stemina
 run(Run) --Stemina <= 0--> e
 event ---> Steminadown(Stemina Down)
 event --day14 && location plane crash--> e(End Game)
 event(random event) ----> collectitem(Collec Item) ---> Item
 ingame ---> Itemuse(Item use)
-Item ---> Itemuse
-Item ---> Itemcraft(Item Craft)
-Item ---> Itemcook(Item Cook)
+Item ---> Itemuse ---> Itemuseable(Cook_food,Cook water,vegetable,fruit,coconut,herb)
+Item ---> Itemcraft(Item Craft) ---> Itemcraftable(Wood,stone,coconut shells,vines)
+Item ---> Itemcook(Item Cook) ---> Itemcookable(meat,water)
 ingame ---> campfire(Campfire)
 campfire(Campfire) ---> Itemcraft(Item Craft)
 campfire(Campfire) ---> Itemcook(Item Cook)
