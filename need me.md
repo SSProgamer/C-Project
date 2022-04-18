@@ -41,7 +41,10 @@ event(random event) --collect item--> Item
 ingame ---> Itemuse(Item use)
 Item ---> Itemuse
 Item ---> Itemcraft(Item Craft)
+Item ---> Itemcook(Item Cook)
 ingame ---> campfire(Campfire)
+campfire(Campfire) ---> Itemcraft(Item Craft)
+campfire(Campfire) ---> Itemcook(Item Cook)
 ingame ---> stack(energy bur) --->hp
 stack(energy bur) --->Hunger(Hunger) --true--> hp_down(hp_down) ---> hp
 stack(energy bur) --->Thirsty(Thirsty) --true--> hp_down(hp_down) ---> hp
