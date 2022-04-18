@@ -35,6 +35,11 @@
 ```mermaid
 flowchart TD
 start(Start Game) ---> ingame(game play)
+ingame ---> stack(energy bur) --->hp
+stack(energy bur) --->Hunger(Hunger) --true--> hp_down(hp_down) ---> hp
+stack(energy bur) --->Thirsty(Thirsty) --true--> hp_down(hp_down) ---> hp
+hp(HP <= 0) --true--> e(End Game)
+
 campfire ---> explore(exploring) ---> way(choose way) ---> event(random event)
 way ---> campfire
 event --day14 && location plane crash--> e(End Game)
@@ -46,10 +51,6 @@ Item ---> Itemcook(Item Cook)
 ingame ---> campfire(Campfire)
 campfire(Campfire) ---> Itemcraft(Item Craft)
 campfire(Campfire) ---> Itemcook(Item Cook)
-ingame ---> stack(energy bur) --->hp
-stack(energy bur) --->Hunger(Hunger) --true--> hp_down(hp_down) ---> hp
-stack(energy bur) --->Thirsty(Thirsty) --true--> hp_down(hp_down) ---> hp
-hp(HP <= 0) --true--> e(End Game)
 ```
 - UI Flow
 
