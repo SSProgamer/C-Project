@@ -36,7 +36,7 @@
 flowchart TD
 start(Start Game) ---> ingame(game play)
 ingame ---> status(Status) --->hp
-status ---> Stemina(Stemina) -- Stemina > 0 can--> explore
+status ---> Stamina(Stamina) -- Stamina > 0 can--> explore
 status ---> Hunger(Hunger) --Hunger <= 0--> hp_down(hp_down) ---> hp
 status ---> Thirsty(Thirsty) --Thirsty <= 0--> hp_down(hp_down) ---> hp
 status ---> combatpower(Combat Power) --> combet
@@ -47,15 +47,15 @@ way ---> campfire
 event ----> combet(Combet)
 combet ---> fight(Fight) --win--> collectitem(Collec Item)
 fight(Fight) --lose--> e
-combet ---> run(Run) ---> Steminadown(Stemina Down) --> Stemina
-run(Run) --Stemina <= 0--> e
-event ---> Steminadown(Stemina Down)
+combet ---> run(Run) ---> Staminadown(Stamina Down) --> Stamina
+run(Run) --Stamina <= 0--> e
+event ---> Staminadown(Stamina Down)
 event --day14 && location plane crash--> e(End Game)
 event(random event) ----> collectitem(Collec Item) ---> Item
 ingame ---> Itemuse(Item use)
 Item ---> Itemuse ---> Itemuseable(Cook_food Cook_water vegetable fruit coconut herb) --->Hungerup(Hunger up) ---> Hunger
 Itemuseable ---> Thirstyup(Thirsty Up) ---> Thirsty
-Itemuseable ---> Stemina(Stemina Up) ---> Stemina
+Itemuseable ---> Stamina(Stamina Up)
 Item ---> Itemcraft(Item Craft) ---> Itemcraftable(Wood stone coconut_shells vines) ---> equipment(Knives fishing_hooks coconut_shell_flasks spears bows) ---> combatpower
 Item ---> Itemcook(Item Cook) ---> Itemcookable(meat water) --cook--> foodcook(Cook_food Cook_water) --->Itemuseable
 ingame ---> campfire(Campfire)
@@ -68,7 +68,7 @@ campfire(Campfire) ---> Itemcook(Item Cook)
 - HP บอกเลือดที่มีอยู่ตอนนี้
 - Hunger บอกความหิว หากลดจนเหลือน้อยกว่า 0 จะเสีย HP ต่อ action
 - Thirsty บอกความกระหายน้ำ หากลดจนเหลือน้อยกว่า 0 จะเสีย HP ต่อ action
-- Stemina บอกพลังงานที่เหลืออยู่ในการสำรวจ หากลดจนเหลือน้อยกว่า 0 จะไม่สามรถสำรวจต่อได้
+- Stamina บอกพลังงานที่เหลืออยู่ในการสำรวจ หากลดจนเหลือน้อยกว่า 0 จะไม่สามรถสำรวจต่อได้
 
 ### Item in game
 - food อาหารจำพวก ผัก(H+ T+ S+) เนื้อ(H+++ T- S++)(HP+) ผลไม้(H+ T++ S++) เห็ด(H+ T+ S++) มะพร้าว(H+ T++ S+)
@@ -81,10 +81,10 @@ campfire(Campfire) ---> Itemcook(Item Cook)
 - ต่อสู้กับสัตว์กินพืช หากเราโจมตีใส่ กวาง หากไม่สามารถฆ่าได้ใน 1-2 action มันจะหนี
 - ต่อสู้กับปลา เอาหอกทิ่มที่ปลาจะมีโอกาศได้มากว่า อาวุธชนิดอื่นมาก
 - ต่อสู้กับสัตว์กินเนื้อ หากเราโจมตีใส่ เสือ มันจะโจมตีกลับและผู้เล่นจะเสียลด หากเราเสียเลือดจนหมดในการต่อสู้จะตายทันที หากไม่ต้องการสู้ก็ต้องหนี
-- การหนี หารวิ่งหนีจะเสีย Stemina หากหนีพ้นก็ไม่เป็นไร แต่หาก Stemina หมดและยังหนีไม่พ้น เราจะตายทันที
+- การหนี หารวิ่งหนีจะเสีย Stamina หากหนีพ้นก็ไม่เป็นไร แต่หาก Stamina หมดและยังหนีไม่พ้น เราจะตายทันที
 ### explore
 - การสำรวจจะให้ตัวเลือกสามเส้นทาง คือ ข้างหน้า ทางซ้าย ทางขวา
-- หลังเลือกเส้นทางแล้วก็จะทำการสำรวจพื้นที่ในทางนั้น จากนั้นจะขึ้นรายละเอียดของที่ได้รับและลด Stemina ลง และหลังจากขึ้นรายละเอียดของที่ได้มาแล้ว มีโอกาสเจอ อีเว้น เช่น เจอกวาง,หมูป่า,เสือ,แหล่งน้ำที่มีปลา
+- หลังเลือกเส้นทางแล้วก็จะทำการสำรวจพื้นที่ในทางนั้น จากนั้นจะขึ้นรายละเอียดของที่ได้รับและลด Stamina ลง และหลังจากขึ้นรายละเอียดของที่ได้มาแล้ว มีโอกาสเจอ อีเว้น เช่น เจอกวาง,หมูป่า,เสือ,แหล่งน้ำที่มีปลา
 - ของที่ได้รับจากการสำรวจ ไม้(0-2ชิ้น) หิน(0-2ชิ้น) กะละมะพร้าว(0-1ชิ้น) เถาวัน(0-2ชิ้น) ผัก(0-2ชิ้น) เห็ด(0-1ชิ้น) ผลไม้(0-1ชิ้น) มะพร้าว(0-1ชิ้น)
 - map จะมีแบบป่าไม้ แอ่งน้ำ(น้ำ,ปลา) แม่น้ำ(น้ำ,ปลา) ป่ารก(มีโอกาสเจอ ผัก ผลไม้ เห็ด มาก)
 
