@@ -18,7 +18,6 @@
 
 - มุมมองของเกม เป็นบุคคลที่ 1
 - สไตล์กราฟฟิก เป็น ascii กราฟฟิก
-- Animation อาจมีเล็กน้อย เช่นเดินทางเปลี่ยนโซน
 - Music ถ้าใส่มาได้ก็จะมี
   
   ## Platform
@@ -52,9 +51,8 @@ start ---> setday[days = 0] ---> setwin[win = 0] ---> hp[HP = 10] ---> stamina[S
 checkday --yes--> win[win = 1] ---> endgame
 checkday -- no --> choose[\What to do\]
 choose -- Exploring --> exploring[[Exploring]]
-exploring ---> first[[First Event]] ---> checkexploring{Stamina <= 0} -- yes --> stamina10
+exploring ---> first[[First Event]] stamina_craft(stamina = stamina-2) ---> checkexploring{Stamina <= 0} -- yes --> stamina10
 choose -- Rest --> rest[[Rest]] --->stamina10[stamina = 10]
-choose -- Crafting --> crafting[[Crafting]] ---> stamina_craft(stamina = stamina-2) ---> stamina10
 stamina10 ---> wood{wood <= 10} --yes--> plusday
 wood --no--> hpdown[hp = -10+havewood] --->plusday
 plusday[days += 1] ---> checkday
@@ -71,8 +69,6 @@ Wood
 
 ### energy bur
 - HP บอกเลือดที่มีอยู่ตอนนี้
-- Hunger บอกความหิว หากลดจนเหลือน้อยกว่า 0 จะเสีย HP ต่อ action
-- Thirsty บอกความกระหายน้ำ หากลดจนเหลือน้อยกว่า 0 จะเสีย HP ต่อ action
 - Stamina บอกพลังงานที่เหลืออยู่ในการสำรวจ หากลดจนเหลือน้อยกว่า 0 จะไม่สามรถสำรวจต่อได้
 
 ### Item in game
@@ -87,10 +83,10 @@ Wood
 - ต่อสู้กับสัตว์กินเนื้อ หากเราโจมตีใส่ เสือ มันจะโจมตีกลับและผู้เล่นจะเสียลด หากเราเสียเลือดจนหมดในการต่อสู้จะตายทันที หากไม่ต้องการสู้ก็ต้องหนี
 - การหนี สุ่มว่าหนีรอด ไม่รอด ถ้าไม่รอดก็เสีย HP และต้องสู้ต่อ
 ### explore
-- การสำรวจจะให้ตัวเลือกสามเส้นทาง คือ ข้างหน้า ทางซ้าย ทางขวา
-- หลังเลือกเส้นทางแล้วก็จะทำการสำรวจพื้นที่ในทางนั้น จากนั้นจะขึ้นรายละเอียดของที่ได้รับและลด Stamina ลง และหลังจากขึ้นรายละเอียดของที่ได้มาแล้ว มีโอกาสเจอ อีเว้น เช่น เจอกวาง,หมูป่า,เสือ,แหล่งน้ำที่มีปลา
+- การสำรวจจะสุ่มอีเว้นข้างหน้า
+- หลังเลือกเส้นทางแล้วก็จะทำการสำรวจพื้นที่ในทางนั้น จากนั้นจะขึ้นรายละเอียดของที่ได้รับและลด Stamina ลง และหลังจากขึ้นรายละเอียดของที่ได้มาแล้ว มีโอกาสเจอ อีเว้น เช่น เจอกวาง,สัตว์ร้าย,แหล่งน้ำที่มีปลา
 - ของที่ได้รับจากการสำรวจ ไม้(1-2ชิ้น) หิน(1-2ชิ้น) ผัก(0-2ชิ้น)
-- map จะมีแบบป่าไม้ แอ่งน้ำ(น้ำ,ปลา) แม่น้ำ(น้ำ,ปลา) ป่ารก(มีโอกาสเจอผักมาก)
+- map จะมีแบบป่าไม้ แม่น้ำ(น้ำ,ปลา) ป่ารก(มีโอกาสเจอผักมาก)
 
 ## Team
 1. นายชาติณโยดม วิบูลย์พานิช 64070021
@@ -101,34 +97,3 @@ Wood
 ## Timeline
 - วันเริ่ม Project 14 เมษยน
 - ระยะเวลาการพัฒนาเกม สอง-สามอาทิตย์
-```
-
-```mermaid
-flowchart TD
-start(Start Game) ---> ingame(gameplay)
-ingame --Status--> status(Status) --->hp
-status ---> Stamina(Stamina) -- Stamina > 0 can--> explore
-status ---> Hunger(Hunger) --Hunger <= 0--> hp_down(hp_down) ---> hp
-status ---> Thirsty(Thirsty) --Thirsty <= 0--> hp_down(hp_down) ---> hp
-status ---> combatpower(Combat Power += 1) --> combat
-hp(HP <= 0) --true--> e(End Game)
-campfire --Exploring--> explore(exploring) ---> way(choose way) ---> event(random event)
-way ---> campfire
-event ----> combat(Combat)
-combat ---> fight(Fight) --win--> collectitem(Collect Item)
-fight(Fight) --lose--> e
-combat ---> run(Run) ---> Staminadown(Stamina Down) --> Stamina
-run(Run) --Stamina <= 0--> e
-event ---> Staminadown(Stamina Down)
-event --day14 && location plane crash--> e(End Game)
-event(random event) ----> collectitem(Collect Item) ---> Item
-ingame --Item Use--> Itemuse(Item use)
-Item ---> Itemuse ---> Itemuseable(Cook_food Cook_water vegetable fruit coconut herb) --->Hungerup(Hunger up) ---> Hunger
-Itemuseable ---> Thirstyup(Thirsty Up) ---> Thirsty
-Itemuseable ---> Stamina(Stamina Up)
-Item ---> Itemcraft(Item Craft) --Choose Material--> Itemcraftable(Wood stone coconut_shells vines) -- Crafing Item --> equipment(Knives fishing_hooks coconut_shell_flasks spears bows) ---> combatpower
-Item ---> Itemcook(Item Cook) ---> Itemcookable(meat water) --cook--> foodcook(Cook_food Cook_water) --->Itemuseable
-ingame -- Campfire --> campfire(Campfire)
-campfire(Campfire) -- Crafting ---------------------> Itemcraft(Item Craft)
-campfire(Campfire) -- Cooking--> Itemcook(Item Cook)
-```
