@@ -15,5 +15,35 @@
         B --> C[Server01] 
         B --> D[Server02]
     </div>
+    <pre>
+        <code>
+            void eat_drink(){
+                system("cls");
+                printf("HP : ");
+                for(int i=1;i<=20;i++){
+                    if(i<=hp){
+                        printf("0");
+                    }
+                    else{
+                        printf("-");
+                    }
+                }
+                printf(" Energy : ");
+                for(int i=1;i<=10;i++){
+                    if(i<=energy){
+                        printf("0");
+                    }
+                    else{
+                        printf("-");
+                    }
+                }
+                printf("\nFood : %d\n", food);
+                printf("Water : %d\n", water);
+                printf("\n\n\n\n\n\n1 : Eat food\n");
+                printf("2 : Drink water\n");
+                printf("3 : Close bag\n");
+            }
+        </code>
+    </pre>
 </body>
 </html>
