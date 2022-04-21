@@ -15,6 +15,241 @@
         B --> C[Server01] 
         B --> D[Server02]
     </div>
+
+    <style>
+        /*
+        font-family: 'Chonburi', cursive;
+        font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+        font-family: 'Noto Sans Thai', sans-serif; 
+        */
+        body{
+          --ci1:#19303F;
+          --ci2:#0F73BD;
+          --ci3:#C03821;
+          --ci4:#BD9174;
+          --ci5:#D68162;
+          --ci6:#4C4949;
+          background:#fff;
+          margin:0;
+          font-family:sans-serif;
+          color:#359;
+          font-family: 'IBM Plex Sans Thai Looped', sans-serif;
+        }
+        nav{
+          height:64px;
+          display:flex;
+          align-items:center;
+          justify-content:space-between;
+          box-sizing:border-box;
+          box-shadow:0px 5px 10px #0008;
+          font-family: 'Noto Sans Thai', sans-serif;
+        }
+        nav .site{
+          width:4rem;
+          margin-left:1rem;
+        }
+        nav .nav-items{
+          height:100%;
+          width:calc(100% - 5rem);
+          display:flex;
+          justify-content:flex-end;
+        }
+        nav a{
+          height:100%;
+          display:inline-flex;
+          align-items:center;
+          padding:0 1em ;
+          font-weight:bold;
+          transition:all .2s;
+        }
+        nav a:hover{
+          color:white;
+          background:var(--ci2);
+        }
+        .logo{
+          font-size:2rem;
+          color:var(--ci3);
+        }
+        #header{
+          height:50vw;
+          font-size:4vw;
+          box-sizing:border-box;
+          text-align:center;
+          background-image:
+            url(https://randomc.net/image/Yuru%20Camp/Yuru%20Camp%20-%2001%20-%20Large%2014.jpg);
+          background-size:cover;
+          background-position:center;
+          color:#fff9;
+          display:flex;
+          background-attachment:fixed;
+          position:relative;
+        }
+        .header-inner{
+          background-image:
+            linear-gradient(to bottom,#0004,#000c);
+          width:100%;
+          height:100%;
+          justify-content:center;
+          align-items:center;
+          display:flex;
+          flex-flow:column wrap;
+          font-family: 'Chonburi', cursive;
+        }
+        .header-inner h1,.header-inner h2{
+          margin:0;
+        }
+        .header-inner h2{
+          font-size:2em;
+          color:#fff;
+        }
+        #palette{
+          display:flex;
+          width:max-content;
+          margin:auto;
+          margin-top:-40px;
+          position:relative;
+          z-index:10;
+        }
+        .palette-color{
+          width:64px;
+          height:64px;
+          background:grey;
+          border-radius:9px;
+          margin-left:1.5em;
+          border:.5em solid #fff;
+          /*         box-sizing:border-box; */
+          box-shadow:0px 5px 10px #0002;
+        }
+        .palette-color
+        .palette-color:first-child{
+          margin:0;
+        }
+        .article{
+          max-width:900px;
+          margin:auto;
+          padding:2em;
+        }
+        .title{
+          color:#000;
+          background:#ACA5B8;
+          padding:0.4em .5em;
+          display:inline-block;
+          font-size:2em;
+          font-family: 'Noto Sans Thai', sans-serif;
+          font-family: 'Chonburi', cursive;
+        }
+        .subtitle{
+          font-size:1.4em;
+          color:var(--ci2);
+          font-family: 'Noto Sans Thai', sans-serif;
+        }
+        .lead{
+          font-family: 'Noto Sans Thai', sans-serif;
+        }
+        .pic{
+          width:100%;
+          border-radius:15px;
+          box-shadow:0px 5px 10px #0005;
+          margin:1em 0 2em;
+        }
+        .hr{
+          display:block;
+          width:200px;
+          background:var(--ci5);
+          height:4px;
+          margin:auto;
+        }
+        #footer{
+          background:var(--ci3);
+          background-image:linear-gradient(to top,#0000,#0004), url("https://pbs.twimg.com/media/FHx3i0BaQAQdEof?format=jpg&name=large");
+          padding:2em 1 3em;
+          color:#fffb;
+          background-size:cover;
+          background-position:top center;
+          font-family: 'Noto Sans Thai', sans-serif;
+        }
+        #copy{
+          background:var(--ci4);
+          color:white;
+          padding:1em 0;
+          text-align:center;
+          font-size:.8em;
+          font-weight:700;
+          color:#fff8;
+          font-family: 'Noto Sans Thai', sans-serif;
+        }
+        .social{
+          font-size:2em;
+        }
+        .caption{
+          text-align:center;
+          font-style:italic;
+          color:var(--ci3);
+          margin-bottom:2em;
+          font-family: 'Noto Sans Thai', sans-serif;
+        }
+        blockquote {
+          margin: 2em;
+          background: #f4f5f5;
+          padding: 1em;
+          font-size: 1.3em;
+          border-left: 10px solid var(--ci1);
+          font-family: 'Noto Sans Thai', sans-serif;
+        }
+      </style>
+    </head>
+    <body>
+      <nav>
+        <div class="site">
+          
+        </div>
+      </nav>
+      <section id="header">
+        <div class="header-inner">
+          <h1>
+            pro pro project
+          </h1>
+          <h2 style="font-weight:200">
+            CP 2021
+          </h2>
+        </div>
+      </section>
+      <section class="article">
+        <h1 class="title">
+            โครงร่างไว้ก่อน เดี๋ยวแก้รายละเอียดเพิ่มทีหลัง
+          </h1>
+        <h2 class="title">
+          รายละเอียดโครงงาน
+        </h2>
+        <p class="lead cl-ci3">
+          “การปฏิวัติอเมริกา (American Revolution)” เป็นเหตุการณ์สำคัญที่เกิดขึ้นในสมัยศตวรรษที่ 18 และเป็นปฐมฤกษ์ของความยิ่งใหญ่ของสหรัฐอเมริกาในเวลาต่อมา ชาวอาณานิคมกลุ่มแรกเดินทางมายังสหรัฐอเมริกาในสมัยศตวรรษที่ 17 และต้องก่อร่างสร้างประเทศอย่างโดดเดี่ยว พวกเขาต้องเลือกผู้นำเอง ต้องแก้ปัญหาเอง สหราชอาณาจักรซึ่งเป็นเหมือนประเทศแม่ ก็ไม่ได้ให้ความสนใจที่จะช่วยเหลืออะไรซักเท่าไร พวกเขาต้องเลือกผู้นำเอง ต้องแก้ปัญหาเอง สหราชอาณาจักรซึ่งเป็นเหมือนประเทศแม่ ก็ไม่ได้ให้ความสนใจที่จะช่วยเหลืออะไรซักเท่าไร
+        </p>
+      
+        <p>
+          ในช่วงกลางศตวรรษที่ 18 อังกฤษได้รบกับฝรั่งเศสและประสบชัยชนะ แต่ถึงจะชนะ ก็เป็นชัยชนะที่มีราคาแพง อังกฤษต้องใช้งบประมาณไปกับการสงครามเยอะมาก อังกฤษคิดว่าชาวอาณานิคมอเมริกาควรจะต้องจ่ายค่าทำสงครามนี้ด้วย ชาวอาณานิคมต่างรู้สึกโกรธแค้นและไม่พอใจ พวกเขาต้องมาจ่ายภาษีในสงครามที่ตนไม่ได้ก่อ และยังถูกสั่งห้ามไม่ให้เข้าไปตั้งรกรากในดินแดนบางส่วน เนื่องจากเป็นบริเวณที่ถูกจัดไว้ให้พวกอินเดียนแดง และอังกฤษก็อยากจะเอาใจพวกอินเดียนแดง ไม่อยากให้อินเดียนแดงโกรธ ภายหลังสงครามกับฝรั่งเศสจบลง อังกฤษก็เริ่มจะขูดรีดภาษีจากชาวอาณานิคม ได้มีการออกพระราชบัญญัติสแตมป์ (Stamp Act) ซึ่งจะมีการเก็บภาษีจากกระดาษต่างๆ ไม่ว่าจะเป็นเอกสารหรือหนังสือพิมพ์ จะถูกเก็บภาษี ทำให้ชาวอาณานิคมไม่พอใจอย่างมาก ได้มีการออกพระราชบัญญัติสแตมป์ (Stamp Act) ซึ่งจะมีการเก็บภาษีจากกระดาษต่างๆ ไม่ว่าจะเป็นเอกสารหรือหนังสือพิมพ์ จะถูกเก็บภาษี ทำให้ชาวอาณานิคมไม่พอใจอย่างมาก ชาวอาณานิคมเชื่อว่าพวกตนมีสิทธิมีเสียง และควรจะได้รับความยุติธรรมมากกว่านี้
+        </p>
+        <img src="https://images-ext-2.discordapp.net/external/9uK1mxd-MmSKHUrQsMzpTdcJKhIb1jaZwD9NU1j0bEA/https/deadentertainment.com/uploads/dark-souls-bonfire-statue-1277f94145.png" class="pic">
+        <div class="caption">
+          The scene pro pro project in Thailand.
+        </div>
+        <p>
+          ในเวลาต่อมา อังกฤษได้ส่งทหารเข้ามาควบคุมความเรียบร้อยในอาณานิคมอเมริกา และได้มีการยอมเลิกภาษีหลายอย่าง หากแต่มีอยู่อย่างหนึ่งที่ยังไม่ถูกยกเลิก นั่นคือ “ภาษีชา” ค.ศ.1773 (พ.ศ.2316) ชาวอาณานิคมกลุ่มหนึ่งได้ปลอมตัวเป็นอินเดียนแดง และได้บุกขึ้นไปบนเรืออังกฤษ และเทใบชาจำนวนมาก ทิ้งลงในแม่น้ำข้างท่าเรือบอสตัน เหตุการณ์นี้คือเหตุการณ์ “งานเลี้ยงน้ำชาที่บอสตัน (Boston Tea Party)” (ผมเคยเขียนเรื่องนี้เป็นซีรีส์เช่นเดียวกันครับ)
+        </p>
+        <h2 class="title">
+            คำอธิบายโครงงาน
+          </h2>
+        <p>
+          ภายหลังจากเหตุการณ์นี้ ความสัมพันธ์ระหว่างอังกฤษและชาวอาณานิคมก็มีแต่แย่ลงเรื่อยๆ ชาวอาณานิคมเริ่มจะทำการต่อต้านสินค้าที่อังกฤษนำเข้ามาจำหน่าย ค.ศ.1775 (พ.ศ.2318) ชาวอาณานิคมรู้สึกว่าพวกตนทนมามากพอแล้ว ถึงเวลาที่ต้องต่อสู้ กองทัพอเมริกันได้เริ่มสงครามแรกที่เล็กซิงตัน แมสซาชูเซตส์ ก่อนที่อีกไม่กี่เดือนต่อมา กองทัพอเมริกันจึงได้มีผู้นำคนสำคัญ คือ “จอร์จ วอชิงตัน (George Washington)”
+        </p>
+        <p>
+          แต่ถึงอย่างนั้น ชาวอาณานิคมก็ยังไม่มีความพร้อมในการทำสงคราม พวกเขายังอยู่กันอย่างกระจัดกระจาย แถมยังไม่มีรัฐบาลกลางเป็นของตนเอง เมื่อสงครามเริ่มปะทุขึ้น อาณานิคมทั้ง 13 แห่งจึงได้ร่วมกันตั้งสภาแห่งชาติ ในเวลาไม่ช้า ชาวอาณานิคมต่างก็เริ่มจะคิดได้ว่าพวกตนไม่สามารถจะหวังอะไรกับอังกฤษได้ พวกตนต้องการจะปกครองตนเอง 4 กรกฎาคม ค.ศ.1776 (พ.ศ.2319) ได้มีการเซ็นรับรองคำประกาศอิสรภาพ ทำให้ชาวอาณานิคมเป็นอิสระ
+        </p>
+        <p>
+          อังกฤษเองก็ไม่ยอมปล่อยอเมริกาไปง่ายๆ ได้มีการทำสงครามกับอเมริกาบ่อยครั้งและก็ชนะ เนื่องจากอังกฤษมีอาวุธและเสบียงมากกว่า กองทัพของวอชิงตันนั้นอ่อนแอ ยิ่งในฤดูหนาว เสบียงก็แทบไม่มี ทหารต่างล้มป่วย แต่ภายหลังก็สามารถพลิกกลับมาเอาชนะอังกฤษได้ ในช่วงปีท้ายๆ สงครามได้เกิดขึ้นที่ภาคเหนือเป็นสำคัญ แต่ในที่สุด อังกฤษก็ต้องยอมแพ้และเซ็นสนธิสัญญาสันติภาพกับสหรัฐอเมริกาที่ปารีส ในการปฏิวัติ ต่อสู้เพื่ออิสรภาพนี้ ทหารอเมริกันล้มตายกว่า 7,000 คน แต่การต่อสู้นี้ก็นับว่าคุ้มค่า หากไม่ลุกขึ้นสู้ สหรัฐอเมริกาคงยังต้องนอบน้อมต่ออังกฤษ ไม่มีอิสรภาพ และคงไม่ได้กลายเป็นชาติที่ทรงอำนาจดังเช่นทุกวันนี้
+        </p>
+        <h2 class="title">
+            Source Code
+          </h2>
     <pre>
         <code>
             void eat_drink(){
@@ -45,5 +280,18 @@
             }
         </code>
     </pre>
+    <div class="hr">
+    </div>
+  </section>
+  <footer id="footer">
+    <div class="article">
+      <p>
+        ใส่ไว้เท่ๆ
+        <br>
+        ถ้าหาภาพได้ก็เอามาแต่ง
+        <br>
+        poi
+      </p>
+    </div>
 </body>
 </html>
