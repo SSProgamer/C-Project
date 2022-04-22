@@ -4,38 +4,11 @@
 #include <ctype.h>
 #include <conio.h>
 
-int gameover=0, day=1, win=0, screen_main=1, screen_ed=0;
-int hp=20, energy=10;
+int gameover=0, day=1, win=0, screen_main=1, screen_ed=0, screen_explore=0;
+int hp=20, stamina=10, ammo=10;
 int campfire=0, food=0, water=0;
 
-void eat_drink(){
-    system("cls");
-    printf("HP : ");
-    for(int i=1;i<=20;i++){
-        if(i<=hp){
-            printf("0");
-        }
-        else{
-            printf("-");
-        }
-    }
-    printf(" Energy : ");
-    for(int i=1;i<=10;i++){
-        if(i<=energy){
-            printf("0");
-        }
-        else{
-            printf("-");
-        }
-    }
-    printf("\nFood : %d\n", food);
-    printf("Water : %d\n", water);
-    printf("\n\n\n\n\n\n1 : Eat food\n");
-    printf("2 : Drink water\n");
-    printf("3 : Close bag\n");
-}
-
-void screen(){
+void main_screen(){
     system("cls");
     printf("Day %d\t", day);
     printf("HP : ");
@@ -47,9 +20,9 @@ void screen(){
             printf("-");
         }
     }
-    printf("\n\tEnergy : ");
+    printf("\n\tStamina : ");
     for(int i=1;i<=10;i++){
-        if(i<=energy){
+        if(i<=stamina){
             printf("0");
         }
         else{
@@ -65,10 +38,42 @@ void screen(){
             printf("-");
         }
     }
-    printf("\n\n\n\n\n\n1 : Go find someting\n");
+    printf("\n\n\n\n\n\n1 : Exploring\n");
     printf("2 : Check bag\n");
     printf("3 : Sleep\n");
     printf("Press x to harakiri.\n");
+}
+
+void exploring(){
+    system("cls");
+    
+}
+
+void eat_drink(){
+    system("cls");
+    printf("HP : ");
+    for(int i=1;i<=20;i++){
+        if(i<=hp){
+            printf("0");
+        }
+        else{
+            printf("-");
+        }
+    }
+    printf(" Stamina : ");
+    for(int i=1;i<=10;i++){
+        if(i<=stamina){
+            printf("0");
+        }
+        else{
+            printf("-");
+        }
+    }
+    printf("\nFood : %d\n", food);
+    printf("Water : %d\n", water);
+    printf("\n\n\n\n\n\n1 : Eat food\n");
+    printf("2 : Drink water\n");
+    printf("3 : Close bag\n");
 }
 
 void check_log(){
@@ -83,11 +88,11 @@ void logic(){
     if(hp>20){
         hp=20;
     }
-    if(energy>10){
-        energy=10;
+    if(stamina>10){
+        stamina=10;
     }
-    else if(energy<0){
-        energy=0;
+    else if(stamina<0){
+        stamina=0;
     }
     if(day>=29){
         gameover=1;
@@ -99,9 +104,9 @@ void input(){
     if(screen_main){
         switch(getch()){
         case '1':
-            energy--;
+            stamina--;
             campfire++;
-            screen();
+            main_screen();
             break;
         case '2':
             screen_main=0;
@@ -110,12 +115,26 @@ void input(){
             break;
         case '3':
             day++;
-            energy=10;
+            stamina=10;
             check_log();
-            screen();
+            main_screen();
             break;
         case 'x':
             gameover=1;
+            break;
+        default:
+            break;
+        }
+    }
+    else if(screen_explore){
+        switch (getch())
+        {
+        case '1':
+            screen_main=1;
+            screen_explore=0;
+            main_screen();
+            break;
+        default:
             break;
         }
     }
@@ -126,20 +145,22 @@ void input(){
             eat_drink();
             break;
         case '2':
-            energy++;
+            stamina++;
             eat_drink();
             break;
         case '3':
             screen_main=1;
             screen_ed=0;
-            screen();
+            main_screen();
+            break;
+        default:
             break;
         }
     }
 }
 
 int main(){
-    while (1)
+    /*while (1)
     {
         printf("##     ## ## ##      ######      ####### ##    ## ######  ##    ## ## ##    ##  ######  ######\n");
         printf("##     ## ## ##      ##   ##     ##      ##    ## ##   ## ##    ## ## ##    ## ##    ## ##   ##\n");
@@ -153,8 +174,8 @@ int main(){
         else{
             system("cls");
         }
-    }
-    screen();
+    }*/
+    main_screen();
     while (!gameover)
     {
         input();
