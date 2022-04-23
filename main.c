@@ -4,7 +4,7 @@
 #include <ctype.h>
 #include <conio.h>
 
-int gameover=0, day=1, win=0, screen_main=1, screen_ed=0, screen_explore=0;
+int gameover=0, day=1, win=0, screen_main=1, screen_ed=0, screen_explore=0,  check_bag=0;
 int hp=20, stamina=10, ammo=10;
 int campfire=0, food=0, water=0;
 
@@ -46,7 +46,28 @@ void main_screen(){
 
 void exploring(){
     system("cls");
-    
+    printf("HP : ");
+    for(int i=1;i<=20;i++){
+        if(i<=hp){
+            printf("0");
+        }
+        else{
+            printf("-");
+        }
+    }
+    printf(" Stamina : ");
+    for(int i=1;i<=10;i++){
+        if(i<=stamina){
+            printf("0");
+        }
+        else{
+            printf("-");
+        }
+    }
+    printf("\n\n\n\n\n");
+    printf("1 : Continue exploring\n");
+    printf("2 : Check bag\n");
+    printf("3 : Back to camp\n");
 }
 
 void eat_drink(){
@@ -85,16 +106,18 @@ void logic(){
     if(hp<=0){
         gameover=1;
     }
-    if(hp>20){
+    else if(hp>20){
         hp=20;
     }
+
     if(stamina>10){
         stamina=10;
     }
     else if(stamina<0){
         stamina=0;
     }
-    if(day>=29){
+
+    if(day>=29&&hp>0){
         gameover=1;
         win=1;
     }
@@ -104,9 +127,10 @@ void input(){
     if(screen_main){
         switch(getch()){
         case '1':
-            stamina--;
-            campfire++;
-            main_screen();
+            screen_main=0;
+            screen_explore=1;
+            check_bag=1;
+            exploring();
             break;
         case '2':
             screen_main=0;
@@ -130,8 +154,21 @@ void input(){
         switch (getch())
         {
         case '1':
+            if(stamina>0){
+                stamina--;
+                campfire++;
+                exploring();
+            }
+            break;
+        case '2':
+            screen_explore=0;
+            screen_ed=1;
+            eat_drink();
+            break;
+        case '3':
             screen_main=1;
             screen_explore=0;
+            check_bag=0;
             main_screen();
             break;
         default:
@@ -149,9 +186,16 @@ void input(){
             eat_drink();
             break;
         case '3':
-            screen_main=1;
-            screen_ed=0;
-            main_screen();
+            if(check_bag){
+                screen_explore=1;
+                screen_ed=0;
+                exploring();
+            }
+            else{
+                screen_main=1;
+                screen_ed=0;
+                main_screen();
+            }
             break;
         default:
             break;
