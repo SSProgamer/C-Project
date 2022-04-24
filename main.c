@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-#include <ctype.h>
 #include <conio.h>
+#include <time.h>
 
-int gameover=0, day=1, win=0, screen_main=1, screen_ed=0, screen_explore=0,  check_bag=0;
-int hp=20, stamina=10, ammo=10;
-int campfire=0, food=0, water=0;
+int gameover=0, day=1, win=0, screen_main=1, screen_bag=0, screen_explore=0,  check_bag=0, fish_event=0;
+int hp=20, stamina=10, random=0, location=0;
+int campfire=0, food=0, water=0, wood=0, ammo=10;
 
 void main_screen(){
     system("cls");
@@ -40,8 +39,13 @@ void main_screen(){
     }
     printf("\n\n\n\n\n\n1 : Exploring\n");
     printf("2 : Check bag\n");
-    printf("3 : Sleep\n");
-    printf("Press x to harakiri.\n");
+    printf("3 : Fill the campfire\n");
+    printf("4 : Sleep\n");
+    printf("Press x to give up.\n");
+}
+
+void fish(){
+    
 }
 
 void exploring(){
@@ -64,13 +68,27 @@ void exploring(){
             printf("-");
         }
     }
-    printf("\n\n\n\n\n");
+    printf("\n");
+    switch(location){
+        case 1:
+            printf("[Forest]");
+            break;
+        case 2:
+            printf("[River]");
+            break;
+        case 3:
+            printf("[Deep forest]");
+            break;
+        default:
+            break;
+    }
+    printf("\n\n\n\n\n\n");
     printf("1 : Continue exploring\n");
     printf("2 : Check bag\n");
     printf("3 : Back to camp\n");
 }
 
-void eat_drink(){
+void bag(){
     system("cls");
     printf("HP : ");
     for(int i=1;i<=20;i++){
@@ -90,14 +108,29 @@ void eat_drink(){
             printf("-");
         }
     }
-    printf("\nFood : %d\n", food);
+    printf("\nLog : %d\n", wood);
+    printf("Food : %d\n", food);
     printf("Water : %d\n", water);
-    printf("\n\n\n\n\n\n1 : Eat food\n");
+    printf("Ammo : %d\n", ammo);
+    printf("\n\n1 : Eat food\n");
     printf("2 : Drink water\n");
     printf("3 : Close bag\n");
 }
 
-void check_log(){
+void exploring_event(){
+    random = rand()%10;
+    if(random<6){
+        location=1;
+    }
+    else if(random<8){
+        location=2;
+    }
+    else{
+        location=3;
+    }
+}
+
+void check_campfire(){
     hp=hp-(10-campfire);
     campfire=0;
 }
@@ -134,13 +167,20 @@ void input(){
             break;
         case '2':
             screen_main=0;
-            screen_ed=1;
-            eat_drink();
+            screen_bag=1;
+            bag();
             break;
         case '3':
+            if(wood>0&&campfire<10){
+                wood--;
+                campfire++;
+                main_screen();
+            }
+            break;
+        case '4':
             day++;
             stamina=10;
-            check_log();
+            check_campfire();
             main_screen();
             break;
         case 'x':
@@ -151,49 +191,58 @@ void input(){
         }
     }
     else if(screen_explore){
-        switch (getch())
-        {
+        switch (getch()){
         case '1':
             if(stamina>0){
                 stamina--;
-                campfire++;
+                wood++;
+                food++;
+                water++;
+                exploring_event();
                 exploring();
             }
             break;
         case '2':
             screen_explore=0;
-            screen_ed=1;
-            eat_drink();
+            screen_bag=1;
+            bag();
             break;
         case '3':
             screen_main=1;
             screen_explore=0;
             check_bag=0;
+            location=0;
             main_screen();
             break;
         default:
             break;
         }
     }
-    else if(screen_ed){
+    else if(screen_bag){
         switch(getch()){
         case '1':
-            hp++;
-            eat_drink();
+            if(food>0&&hp<20){
+                food--;
+                hp++;
+                bag();
+            }
             break;
         case '2':
-            stamina++;
-            eat_drink();
+            if(water>0&&stamina<10){
+                water--;
+                stamina++;
+                bag();
+            }
             break;
         case '3':
             if(check_bag){
                 screen_explore=1;
-                screen_ed=0;
+                screen_bag=0;
                 exploring();
             }
             else{
                 screen_main=1;
-                screen_ed=0;
+                screen_bag=0;
                 main_screen();
             }
             break;
@@ -204,6 +253,7 @@ void input(){
 }
 
 int main(){
+    srand(time(0));
     /*while (1)
     {
         printf("##     ## ## ##      ######      ####### ##    ## ######  ##    ## ## ##    ##  ######  ######\n");
