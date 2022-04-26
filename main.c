@@ -73,6 +73,7 @@ void main_screen(){
         printf("\n  (@))_))        o ~~~~~~ o");
         printf("\n                  o  o  o");
     }
+    printf("\n==================================================");
     printf("\n1 : Exploring\n");
     printf("2 : Check bag\n");
     printf("3 : Fill the campfire\n");
@@ -219,6 +220,7 @@ void deer_screen(){
     printf("\n    /     \\");
     printf("\n    `--'.  \\             ,\n");
     printf("        |   `.__________/)\n");
+    printf("==================================================\n");
     if(deer_event==0){
         printf("Deer, hunt?\n");
         printf("1 : Hunt\n");
