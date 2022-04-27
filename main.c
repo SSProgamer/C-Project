@@ -102,7 +102,7 @@ void exploring(){
             printf("-");
         }
     }
-    printf("\n==============================================\n");
+    printf("\n");
     switch(location){
         case 1:
             printf("[Forest]");
@@ -114,9 +114,16 @@ void exploring(){
             printf("[Deep forest]");
             break;
         default:
+            printf("[Camp]");
+            printf("\n==============================================");
+            printf("\n        ______\n");
+            printf("       /     /\\");
+            printf("\n      /     /  \\");
+            printf("\n     /_____/----\\_");
+            printf("\n    \"     \"");
             break;
     }
-    printf("\n\n\n\n\n\n");
+    printf("\n==============================================\n");
     printf("1 : Continue exploring\n");
     printf("2 : Check bag\n");
     printf("3 : Back to camp\n");
@@ -175,18 +182,25 @@ void snake_screen(){
         }
     }
     printf("\n==============================================\n");
+    printf("   _______\n");
+    printf("--|'___  |\n");
+    printf("  _____| |\n");
+    printf("  | _____|\n");
+    printf("  | |____\n");
+    printf("  |______|\n");
+    printf("==============================================\n");
     if(snake_event==0){
-        printf("Snake, fight?\n\n\n\n\n\n");
+        printf("Snake, fight?\n");
         printf("1 : Fight\n");
         printf("2 : Shoot\n");
         printf("3 : Run\n");
     }
     else if(snake_event==1&&random>=50){
-        printf("Yes, win!\n\n\n\n\n\n");
+        printf("Yes, win!\n");
         printf("Press x to close.\n");
     }
     else if(snake_event==1){
-        printf("You lose.\n\n\n\n\n\n");
+        printf("You lose.\n");
         printf("Press x to close.\n");
     }
 }
@@ -259,17 +273,26 @@ void fish_screen(){
         }
     }
     printf("\n==============================================\n");
+    printf(" o\n");
+    printf("o      ______/~/~/~/__           /((\n");
+    printf("  o  // __            ====__    /_((\n");
+    printf(" o  //  @))       ))))      ===/__((\n");
+    printf("    ))           )))))))        __((\n");
+    printf("    \\\\     \\)     ))))    __===\\ _((\n");
+    printf("     \\\\_______________====      \\_((\n");
+    printf("                                 \\((\n");
+    printf("==============================================\n");
     if(fish_event==0){
-        printf("Fish, want?\n\n\n\n\n\n");
+        printf("Fish, want?\n");
         printf("1 : Want\n");
         printf("2 : No\n");
     }
     else if(fish_event==1&&random>=50){
-        printf("Yes, fish!\n\n\n\n\n\n");
+        printf("Yes, fish!\n");
         printf("Press x to close.\n");
     }
     else if(fish_event==1){
-        printf("No fish for you.\n\n\n\n\n\n");
+        printf("No fish for you.\n");
         printf("Press x to close.\n");
     }
 }
