@@ -3,25 +3,22 @@
 #include <conio.h>
 #include <time.h>
 
-int gameover=0, day=1, win=0, screen_start=1, screen_tutorial=0, screen_main=0, screen_bag=0, screen_explore=0, check_bag=0;
-int fish_event=0, screen_fish=0, snake_event=0, screen_snake=0, deer_event=0, screen_deer=0;
+int gameover=0, day=1, win=0, screen_start=1, screen_main=0, screen_bag=0, screen_explore=0, check_bag=0;
+int fish_event=0, screen_fish=0, snake_event=0, screen_snake=0, deer_event=0, screen_deer=0, get_wood=0;
 int hp=20, stamina=10, random=0, location=0;
-int campfire=0, food=0, water=0, wood=0, ammo=10;
+int campfire=0, food=0, water=0, wood=0, ammo=20;
 
 void start_screen(){
     system("cls");
+    printf("===============================================================================================\n");
     printf("##     ## ## ##      ######      ####### ##    ## ######  ##    ## ## ##    ##  ######  ######\n");
     printf("##     ## ## ##      ##   ##     ##      ##    ## ##   ## ##    ## ## ##    ## ##    ## ##   ##\n");
     printf("##  #  ## ## ##      ##   ##     ####### ##    ## ######  ##    ## ## ##    ## ##    ## ######\n");
     printf("## ### ## ## ##      ##   ##          ## ##    ## ##   ##  ##  ##  ##  ##  ##  ##    ## ##   ##\n");
     printf(" ### ###  ## ####### ######      #######  ######  ##   ##   ####   ##   ####    ######  ##   ##\n");
-    printf("\n\t\t\t\t\t1 : Start\n");
-    printf("\t\t\t\t\t2 : Tutorial\n");
-}
-
-void tutorial_screen(){
-    system("cls");
-    printf("Press x to close.\n");
+    printf("===============================================================================================\n");
+    printf("\t\t\t\t    Survive for 28 days to win.\n");
+    printf("\t\t\t\t\tPress 's' to start.\n");
 }
 
 void main_screen(){
@@ -56,28 +53,28 @@ void main_screen(){
         }
     }
     printf("\n==================================================");
-    printf("\n        ______\n");
-    printf("       /     /\\");
-    printf("\n      /     /  \\");
+    printf("\n                  ______\n");
+    printf("                 /     /\\");
+    printf("\n                /     /  \\");
     if(campfire>0){
-        printf("\n     /_____/----\\_    (");
-        printf("\n    \"     \"          ).");
-        printf("\n   _ ___          o (:') o");
-        printf("\n  (@))_))        o ~/~~\\~ o");
-        printf("\n                  o  o  o");
+        printf("\n               /_____/----\\_    (");
+        printf("\n              \"     \"          ).");
+        printf("\n             _ ___          o (:') o");
+        printf("\n            (@))_))        o ~/~~\\~ o");
+        printf("\n                            o  o  o");
     }
     else{
-        printf("\n     /_____/----\\_");
-        printf("\n    \"     \"");
-        printf("\n   _ ___          o o  o o");
-        printf("\n  (@))_))        o ~~~~~~ o");
-        printf("\n                  o  o  o");
+        printf("\n               /_____/----\\_");
+        printf("\n              \"     \"");
+        printf("\n             _ ___          o o  o o");
+        printf("\n            (@))_))        o ~~~~~~ o");
+        printf("\n                            o  o  o");
     }
     printf("\n==================================================");
     printf("\n1 : Exploring\n");
     printf("2 : Check bag\n");
-    printf("3 : Fill the campfire\n");
-    printf("4 : Sleep\n");
+    printf("3 : Fill the campfire (Log-1)\n");
+    printf("4 : Sleep (HP-1 per empty campfire)\n");
     printf("Press x to give up.\n");
 }
 
@@ -106,25 +103,72 @@ void exploring(){
     switch(location){
         case 1:
             printf("[Forest]");
+            printf("\n==============================================\n");
+            printf("               ,@@@@@@@,\n");
+            printf("       ,,,.   ,@@@@@@/@@,  .oo8888o.\n");
+            printf("    ,&88&8&&8,@@@@@/@@@@@@,8888\\88/8o\n");
+            printf("   ,8&\\8&&8&&8,@@@\\@@@/@@@88\\88888/88'\n");
+            printf("   8&&8&8&/8&&8@@\\@@/ /@@@88888\\88888'\n");
+            printf("   8&&8/ 8&88&&@@\\ V /@@' `88\\8 `/88'\n");
+            printf("   `&8\\ ` /8&'    |.|        \\ '|8'\n");
+            printf("       |o|        | |         | |\n");
+            printf("       |.|        | |         | |\n");
+            printf("    \\\\/ ._\\//_/__/  ,\\_//__\\\\/.  \\_//__/_");
+            printf("\n==============================================\n");
+            printf("You got %d log.\n", get_wood);
             break;
         case 2:
             printf("[River]");
+            printf("\n==============================================\n");
+            printf("--~-.______\n");
+            printf("          ~~~~-----...___________..--------\n");
+            printf("                      |   |     |\n");
+            printf("                      | |   |  ||\n");
+            printf("                      |  |  |   |\n");
+            printf("                      |'. .' .`.|\n");
+            printf("______________________|0oOO0oO0o|____________\n");
+            printf(" -       -      -    / '  '. ` ` \\    -    -\n");
+            printf("     --       --   /    '  . `   ` \\    --\n");
+            printf("       ---       /  '                \\ ---\n");
+            printf("   ----        /       ' ' .    ` `    \\  ----\n");
+            printf("       ----- /   '   '        `      `   \\");
+            printf("\n------     /          '    . `     `    `  \\");
+            printf("\n         /  '    '      '      `");
+            printf("\n==============================================\n");
+            printf("You got %d log.\n", get_wood);
+            printf("You got 1 water.\n");
             break;
         case 3:
             printf("[Deep forest]");
+            printf("\n==============================================\n");
+            printf("         A         A          A         A\n");
+            printf("        d$b       d$b        d$b       d$b\n");
+            printf("       d$$@b     d$$@b      d$$@b     d$$@b\n");
+            printf("      d\\$$$ib   d\\$$$ib    d\\$$$ib   d\\$$$ib\n");
+            printf("    .d$$$\\$$$b.d$$$\\$$$b  .d$$$\\$$$b.d$$$\\$$$b\n");
+            printf("  .d$$@$$$$\\$$ib.$$$\\$$ib.d$$@$$$$\\$$ib.$$$\\$$\n");
+            printf("      d$$i$$b   d$$i$$b     d$$i$$b   d$$i$$b\n");
+            printf("     d\\$$$$@$b d\\$$$$@$b   d\\$$$$@$b d\\$$$$@$b\n");
+            printf("  .d$@$$\\$$$$$@b.\\$$$$$@b.d$@$$\\$$$$$@b.\\$$$$$\n");
+            printf(".d$$$$i$$$\\$$$$$$b.\\$$$$$$b.d$$$i$$\\$$$$$$b.\\$\n");
+            printf("        ###       ###        ###       ###\n");
+            printf("        ###       ###        ###       ###\n");
+            printf("VVwwvvWWwwVVvvVVwwWWvvwwVVVVwVVwwvvWWwwVVvvVVw");
+            printf("\n==============================================\n");
+            printf("You got %d log.\n", get_wood);
             break;
         default:
             printf("[Camp]");
             printf("\n==============================================");
-            printf("\n        ______\n");
-            printf("       /     /\\");
-            printf("\n      /     /  \\");
-            printf("\n     /_____/----\\_");
-            printf("\n    \"     \"");
+            printf("\n                  ______\n");
+            printf("                 /     /\\");
+            printf("\n                /     /  \\");
+            printf("\n               /_____/----\\_");
+            printf("\n              \"     \"");
+            printf("\n==============================================\n");
             break;
     }
-    printf("\n==============================================\n");
-    printf("1 : Continue exploring\n");
+    printf("1 : Continue exploring (Stamina-1)\n");
     printf("2 : Check bag\n");
     printf("3 : Back to camp\n");
 }
@@ -155,8 +199,15 @@ void bag(){
     printf("Food : %d\n", food);
     printf("Water : %d\n", water);
     printf("Ammo : %d\n", ammo);
-    printf("\n\n1 : Eat food\n");
-    printf("2 : Drink water\n");
+    printf("   ___\n");
+    printf("  /   \\");
+    printf("\n |__o__|\n");
+    printf(" / : : \\");
+    printf("\n(       )\n");
+    printf(" `-----'\n");
+    printf("==============================================\n");
+    printf("1 : Eat food (HP+1)\n");
+    printf("2 : Drink water (Stamina+1)\n");
     printf("3 : Close bag\n");
 }
 
@@ -182,25 +233,25 @@ void snake_screen(){
         }
     }
     printf("\n==============================================\n");
-    printf("   _______\n");
-    printf("--|'___  |\n");
-    printf("  _____| |\n");
-    printf("  | _____|\n");
-    printf("  | |____\n");
-    printf("  |______|\n");
+    printf("                       .-=-.          .--.\n");
+    printf("           __        .'     '.       /  \" )");
+    printf("\n   _     .'  '.     /   .-.   \\     /  .-'\\");
+    printf("\n  ( \\   / .-.  \\   /   /   \\   \\   /  /    ^\n");
+    printf("   \\ `-` /   \\  `-'   /     \\   `-`  /\n");
+    printf("    `-.-`     '.____.'       `.____.'\n");
     printf("==============================================\n");
     if(snake_event==0){
-        printf("Snake, fight?\n");
-        printf("1 : Fight\n");
-        printf("2 : Shoot\n");
-        printf("3 : Run\n");
+        printf("You found a snake, want to hunt?\n");
+        printf("1 : Hunt (Chance to fail)\n");
+        printf("2 : Shoot (Use ammo)\n");
+        printf("3 : Ignore\n");
     }
     else if(snake_event==1&&random>=50){
-        printf("Yes, win!\n");
+        printf("You successfully hunt them. (Food+2)\n");
         printf("Press x to close.\n");
     }
     else if(snake_event==1){
-        printf("You lose.\n");
+        printf("You fail to hunt them and they bite you back. (HP-1)\n");
         printf("Press x to close.\n");
     }
 }
@@ -227,26 +278,26 @@ void deer_screen(){
         }
     }
     printf("\n==============================================\n");
-    printf("(             )\n");
-    printf(" `--(_   _)--'\n");
-    printf("      Y-Y\n");
-    printf("     /@@ \\");
-    printf("\n    /     \\");
-    printf("\n    `--'.  \\             ,\n");
-    printf("        |   `.__________/)\n");
+    printf("          (             )\n");
+    printf("           `--(_   _)--'\n");
+    printf("                Y-Y\n");
+    printf("               /@@ \\");
+    printf("\n              /     \\");
+    printf("\n              `--'.  \\             ,\n");
+    printf("                  |   `.__________/)\n");
     printf("==================================================\n");
     if(deer_event==0){
-        printf("Deer, hunt?\n");
-        printf("1 : Hunt\n");
-        printf("2 : Shoot\n");
-        printf("3 : No\n");
+        printf("You found a deer, want to hunt?\n");
+        printf("1 : Hunt (Chance to fail)\n");
+        printf("2 : Shoot (Use ammo)\n");
+        printf("3 : Ignore\n");
     }
     else if(deer_event==1&&random>=50){
-        printf("Yes, you kill them!\n");
+        printf("You successfully kill them. (Food+1)\n");
         printf("Press x to close.\n");
     }
     else if(deer_event==1){
-        printf("They escape.\n");
+        printf("They escape you.\n");
         printf("Press x to close.\n");
     }
 }
@@ -273,26 +324,26 @@ void fish_screen(){
         }
     }
     printf("\n==============================================\n");
-    printf(" o\n");
-    printf("o      ______/~/~/~/__           /((\n");
-    printf("  o  // __            ====__    /_((\n");
-    printf(" o  //  @))       ))))      ===/__((\n");
-    printf("    ))           )))))))        __((\n");
-    printf("    \\\\     \\)     ))))    __===\\ _((\n");
-    printf("     \\\\_______________====      \\_((\n");
-    printf("                                 \\((\n");
+    printf("    o\n");
+    printf("   o      ______/~/~/~/__           /((\n");
+    printf("     o  // __            ====__    /_((\n");
+    printf("    o  //  @))       ))))      ===/__((\n");
+    printf("       ))           )))))))        __((\n");
+    printf("       \\\\     \\)     ))))    __===\\ _((\n");
+    printf("        \\\\_______________====      \\_((\n");
+    printf("                                    \\((\n");
     printf("==============================================\n");
     if(fish_event==0){
-        printf("Fish, want?\n");
-        printf("1 : Want\n");
+        printf("You found a fish, try to catch them?\n");
+        printf("1 : Yes\n");
         printf("2 : No\n");
     }
     else if(fish_event==1&&random>=50){
-        printf("Yes, fish!\n");
+        printf("You managed to catch a fish. (Food+1)\n");
         printf("Press x to close.\n");
     }
     else if(fish_event==1){
-        printf("No fish for you.\n");
+        printf("All the fish are getting away.\n");
         printf("Press x to close.\n");
     }
 }
@@ -308,14 +359,16 @@ void exploring_event(){
     else{
         location=3;
     }
-
+    get_wood=0;
     if(location==1){
         random = rand()%100;
         if(random>=90){
             wood=wood+2;
+            get_wood=2;
         }
         else if(random>=40){
             wood++;
+            get_wood=1;
         }
         random = rand()%100;
         if(random>=85){
@@ -336,9 +389,11 @@ void exploring_event(){
         random = rand()%100;
         if(random>=90){
             wood=wood+2;
+            get_wood=2;
         }
         else if(random>=40){
             wood++;
+            get_wood=1;
         }
         water++;
         screen_explore=0;
@@ -349,17 +404,19 @@ void exploring_event(){
         random = rand()%100;
         if(random>=80){
             wood=wood+2;
+            get_wood=2;
         }
         else{
             wood++;
+            get_wood=1;
         }
         random = rand()%100;
-        if(random>=85){
+        if(random>=80){
             screen_explore=0;
             screen_snake=1;
             snake_screen();
         }
-        else if(random>=65){
+        else if(random>=55){
             screen_explore=0;
             screen_deer=1;
             deer_screen();
@@ -399,26 +456,10 @@ void logic(){
 void input(){
     if(screen_start){
         switch(getch()){
-        case '1':
+        case 's':
             screen_start=0;
             screen_main=1;
             main_screen();
-            break;
-        case '2':
-            screen_start=0;
-            screen_tutorial=1;
-            tutorial_screen();
-            break;
-        default:
-            break;
-        }
-    }
-    else if(screen_tutorial){
-        switch(getch()){
-        case 'x':
-            screen_tutorial=0;
-            screen_start=1;
-            start_screen();
             break;
         default:
             break;
