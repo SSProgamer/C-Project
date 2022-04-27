@@ -249,7 +249,7 @@ body{
   left: 60%;
   width: 50%;
 }
-.block04{
+.block04{ /* space */
   position: relative;
   top: 0;
   left: 0;
@@ -294,3 +294,17 @@ body{
 }
 code{background: black;
   position: relative;}
+.button{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: auto;
+  }
+.poster{
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 40%;
+    margin: auto;
+  }
