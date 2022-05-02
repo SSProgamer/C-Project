@@ -307,7 +307,7 @@ void deer_screen(){
         printf("2 : Shoot (Use ammo)\n");
         printf("3 : Ignore\n");
     }
-    else if(deer_event==1&&random>=50){
+    else if(deer_event==1&&random>=80){
         printf("You successfully kill them. (Food+2)\n");
         printf("Press x to close.\n");
     }
