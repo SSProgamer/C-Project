@@ -75,7 +75,7 @@ void main_screen(){
     printf("2 : Check bag\n");
     printf("3 : Fill the campfire (Log-1)\n");
     printf("4 : Sleep (HP-1 per empty campfire)\n");
-    printf("Press x to give up.\n");
+    printf("Press 'g' to give up.\n");
 }
 
 void exploring(){
@@ -255,7 +255,7 @@ void snake_screen(){
         printf("Press x to close.\n");
     }
     else if(snake_event==1&&random>=50){
-        printf("You successfully hunt them. (Food+2)\n");
+        printf("You successfully hunt them. (Food+1)\n");
         printf("Press x to close.\n");
     }
     else if(snake_event==1){
@@ -301,7 +301,7 @@ void deer_screen(){
         printf("3 : Ignore\n");
     }
     else if(deer_event==1&&random>=50){
-        printf("You successfully kill them. (Food+1)\n");
+        printf("You successfully kill them. (Food+2)\n");
         printf("Press x to close.\n");
     }
     else if(deer_event==1){
@@ -361,7 +361,7 @@ void exploring_event(){
     if(random<60){
         location=1;
     }
-    else if(random<80){
+    else if(random<70){
         location=2;
     }
     else{
@@ -501,7 +501,7 @@ void input(){
             check_campfire();
             main_screen();
             break;
-        case 'x':
+        case 'g':
             gameover=1;
             break;
         default:
@@ -569,8 +569,8 @@ void input(){
         case '1':
             if(deer_event==0){
                 random = rand()%100;
-                if(random>=50){
-                    food++;
+                if(random>=80){
+                    food += 2;
                 }
                 deer_event=1;
                 deer_screen();
@@ -610,7 +610,7 @@ void input(){
             if(snake_event==0){
                 random = rand()%100;
                 if(random>=50){
-                    food=food+2;
+                    food++;
                 }
                 else{
                     hp=hp-2;
@@ -712,6 +712,7 @@ int main(){
             printf("             ##    ##    ## ##    ##     ##   ## ## ##      ##   ##\n");
             printf("             ##     ######   ######      ######  ## ####### ######\n");
             printf("=============================================================================\n");
+            printf("\t\t\tYou survived %02d day(s).", day);
         }
         printf("Press x to quit.\n");
         if(getch()=='x'){
