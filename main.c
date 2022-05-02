@@ -4,9 +4,9 @@
 #include <time.h>
 
 int gameover=0, day=1, win=0, screen_start=1, screen_main=0, screen_bag=0, screen_explore=0, check_bag=0;
-int fish_event=0, screen_fish=0, snake_event=0, screen_snake=0, deer_event=0, screen_deer=0, get_wood=0;
+int fish_event=0, screen_fish=0, snake_event=0, screen_snake=0, deer_event=0, screen_deer=0, get_wood=0, snake_option=0;
 int hp=20, stamina=10, random=0, location=0;
-int campfire=0, food=0, water=0, wood=0, ammo=20;
+int campfire=0, food=0, water=0, wood=0, ammo=10;
 
 void start_screen(){
     system("cls");
@@ -241,17 +241,25 @@ void snake_screen(){
     printf("    `-.-`     '.____.'       `.____.'\n");
     printf("==============================================\n");
     if(snake_event==0){
-        printf("You found a snake, want to hunt?\n");
+        printf("The snake try to bite you, what you want to do?\n");
         printf("1 : Hunt (Chance to fail)\n");
         printf("2 : Shoot (Use ammo)\n");
-        printf("3 : Ignore\n");
+        printf("3 : Run (Chance to fail)\n");
+    }
+    else if(snake_event==1&&random>=50&&snake_option==1){
+        printf("You successfully escape them.\n");
+        printf("Press x to close.\n");
+    }
+    else if(snake_event==1&&snake_option==1){
+        printf("You fail to escape them. (HP-1)\n");
+        printf("Press x to close.\n");
     }
     else if(snake_event==1&&random>=50){
         printf("You successfully hunt them. (Food+2)\n");
         printf("Press x to close.\n");
     }
     else if(snake_event==1){
-        printf("You fail to hunt them and they bite you back. (HP-1)\n");
+        printf("You fail to hunt them and they bite you back. (HP-2)\n");
         printf("Press x to close.\n");
     }
 }
@@ -374,6 +382,7 @@ void exploring_event(){
         if(random>=85){
             screen_explore=0;
             screen_snake=1;
+            snake_option=0;
             snake_screen();
         }
         else if(random>=65){
@@ -414,6 +423,7 @@ void exploring_event(){
         if(random>=80){
             screen_explore=0;
             screen_snake=1;
+            snake_option=0;
             snake_screen();
         }
         else if(random>=55){
@@ -603,7 +613,7 @@ void input(){
                     food=food+2;
                 }
                 else{
-                    hp--;
+                    hp=hp-2;
                 }
                 snake_event=1;
                 snake_screen();
@@ -612,7 +622,7 @@ void input(){
         case '2':
             if(snake_event==0&&ammo>0){
                 random = 99;
-                food=food+2;
+                food++;
                 ammo--;
                 snake_event=1;
                 snake_screen();
@@ -620,9 +630,13 @@ void input(){
             break;
         case '3':
             if(snake_event==0){
-                screen_snake=0;
-                screen_explore=1;
-                exploring();
+                random = rand()%100;
+                if(random<50){
+                    hp--;
+                }
+                snake_option=1;
+                snake_event=1;
+                snake_screen();
             }
             break;
         case 'x':
