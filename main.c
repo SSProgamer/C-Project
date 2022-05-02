@@ -3,7 +3,7 @@
 #include <conio.h>
 #include <time.h>
 
-int gameover=0, day=1, win=0, screen_start=1, screen_main=0, screen_bag=0, screen_explore=0, check_bag=0;
+int gameover=0, day=1, win=0, screen_start=1, screen_main=0, screen_bag=0, screen_explore=0, check_bag=0, check_sleep=0;
 int fish_event=0, screen_fish=0, snake_event=0, screen_snake=0, deer_event=0, screen_deer=0, get_wood=0, snake_option=0;
 int hp=20, stamina=10, random=0, location=0;
 int campfire=0, food=0, water=0, wood=0, ammo=10;
@@ -71,11 +71,18 @@ void main_screen(){
         printf("\n                            o  o  o");
     }
     printf("\n==================================================");
-    printf("\n1 : Exploring\n");
-    printf("2 : Check bag\n");
-    printf("3 : Fill the campfire (Log-1)\n");
-    printf("4 : Sleep (HP-1 per empty campfire)\n");
-    printf("Press 'g' to give up.\n");
+    if(check_sleep==0){
+        printf("\n1 : Exploring\n");
+        printf("2 : Check bag\n");
+        printf("3 : Fill the campfire (Log-1)\n");
+        printf("4 : Sleep (HP-1 per empty campfire)\n");
+        printf("Press 'g' to give up.\n");
+    }
+    else{
+        printf("\nAre you sure to sleep?\n");
+        printf("1 : Yes\n");
+        printf("2 : No\n");
+    }
 }
 
 void exploring(){
@@ -445,6 +452,7 @@ void check_campfire(){
 void logic(){
     if(hp<=0){
         gameover=1;
+        day--;
     }
     else if(hp>20){
         hp=20;
@@ -496,13 +504,31 @@ void input(){
             }
             break;
         case '4':
+            screen_main=0;
+            check_sleep=1;
+            main_screen();
+            break;
+        case 'g':
+            gameover=1;
+            break;
+        default:
+            break;
+        }
+    }
+    else if(check_sleep){
+        switch(getch()){
+        case '1':
+            screen_main=1;
+            check_sleep=0;
             day++;
             stamina=10;
             check_campfire();
             main_screen();
             break;
-        case 'g':
-            gameover=1;
+        case '2':
+            screen_main=1;
+            check_sleep=0;
+            main_screen();
             break;
         default:
             break;
@@ -712,9 +738,9 @@ int main(){
             printf("             ##    ##    ## ##    ##     ##   ## ## ##      ##   ##\n");
             printf("             ##     ######   ######      ######  ## ####### ######\n");
             printf("=============================================================================\n");
-            printf("\t\t\tYou survived %02d day(s).", day);
+            printf("\t\t\tYou survived %02d day(s).\n", day);
         }
-        printf("Press x to quit.\n");
+        printf("\t\t\t    Press x to quit.\n");
         if(getch()=='x'){
             break;
         }
