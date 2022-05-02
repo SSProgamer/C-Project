@@ -596,7 +596,7 @@ void input(){
             if(deer_event==0){
                 random = rand()%100;
                 if(random>=80){
-                    food += 2;
+                    food = food+2;
                 }
                 deer_event=1;
                 deer_screen();
@@ -605,7 +605,7 @@ void input(){
         case '2':
             if(deer_event==0&&ammo>0){
                 random = 99;
-                food += 2;
+                food = food+2;
                 ammo--;
                 deer_event=1;
                 deer_screen();
