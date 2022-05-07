@@ -37,26 +37,6 @@
 - Progression เราจะใส่ระบบสุ่มอีเว้น ดังต่อไปนี้ เจอกวาง(เจอ 20%)(win_rate 75%), เจองู(เจอ 15%)(win_rate 50%), เจอปลา(เจอ 100%)(win_rate 50%) ทำให้ความรู้ในการเล่นแต่ละรอบต่างกันเพราะสิ่งที่เจออาจจะต่างกัน
 - Enemy มี 2 แบบ คือสัตร์กินพืชและสัตว์ดุร้าย โดยที่สัตว์กินพืชจะไม่ทำร้ายเรามันมักจะหนี ส่วนสัตว์ดุร้ายจะทำร้ายเราและเราต้องหนีหรือไม่ก็ต้องสู้กลับ
 - Game Flow
-  
-## Flowchart
-
-```mermaid
-flowchart TD
-start(Start Game)
-endgame(End Game)
-
-start -- Set Default --> setgame[days = 0\nwin = 0\nHP = 10\nstamina = 10] -- Main Loop --> checkday{days >= 28}
-checkday --yes--> win[win = 1] ---> endgame
-checkday -- no --> choose[\What to do\]
-choose -- Exploring --> exploring[["Exploring()"]]
-exploring ---> stamina10
-choose -- Cooking --> cooking[["Cooking()"]] ---> stamina10
-choose -- Rest --> rest[["Rest()"]] --->stamina10[stamina = 10]
-stamina10 ---> wood{wood <= 10} --yes--> plusday
-wood --no--> hpdown[hp = -10+havewood] ----> hpdied -- no -->plusday
-plusday[days += 1] ---> checkday
-hpdied{HP <= 0} -- yes ---> win0[win = 0] ---> endgame
-```
 
 ### energy bur
 
