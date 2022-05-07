@@ -3,7 +3,7 @@
 
 [![Google](https://github.com/SSProgamer/Wild-Survivor/blob/main/Logo.png)](http://www.google.com)
 
-## ที่มา
+## บทคัดย่อ
 
 > พวกเราต้องการสร้างเกมที่เกี่ยวกับการเอาชีวิตรอด โดยมีแรงบันดานใจมาจากเกมต่างๆ ไม่ว่าจะเป็น Survive - Wilderness Survival, Green Hell เป็นต้น โดยที่พวกเราจะพัฒนาเกมผ่านภาษา C
 
