@@ -20,15 +20,15 @@
 
 ## เว็บไซต์
 
-> test
+> - [Website](https://wild-survivor.netlify.app/)
 
 ## วีดีโอ
 
-> test
+> - [YouTube](https://youtu.be/BvwIr8XyuC4)
 
 ## โปสเตอร์
 
-> test
+![poster](https://raw.githubusercontent.com/SSProgamer/Wild-Survivor/main/Web/Poster.png)
 
 ## สมาชิกกลุ่ม
 
