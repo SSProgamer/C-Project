@@ -2,7 +2,7 @@
 
 > C Language Project for Computer Programming
 
-[![Google](https://github.com/SSProgamer/Wild-Survivor/blob/main/Logo.png)](http://www.google.com)
+![logo](https://github.com/SSProgamer/Wild-Survivor/blob/main/Logo.png)
 
 ## บทคัดย่อ
 
